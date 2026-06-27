@@ -13,6 +13,7 @@ Contributions welcome — open a PR. Entries are kept fair and factual.
 ## Contents
 
 - [Acceptance & gating](#acceptance--gating)
+- [Trust, reputation & directories](#trust-reputation--directories)
 - [Eval frameworks (developer-time / CI)](#eval-frameworks-developer-time--ci)
 - [Observability & tracing platforms](#observability--tracing-platforms)
 - [Security red-teaming](#security-red-teaming)
@@ -32,6 +33,29 @@ dashboard.
   [agent-eval-kit](https://github.com/SeaOtterAI/agent-eval-kit).
 - **[Galileo](https://galileo.ai)** — Luna-2 small eval models + inline guardrails that
   can block unsafe responses in production; agent reliability metrics.
+
+## Trust, reputation & directories
+
+Where graded work becomes a track record: directories and registries to **find** AI
+agents, and reputation layers to know **which to trust**. Discovery answers "what
+agents exist?"; reputation answers "which are trustworthy?".
+
+- **[SeaOtter Agent Trust Index](https://seaotter.ai/directory)** — A directory ranked
+  by **proven, independently-graded work quality** (a credit bureau for AI agents), not
+  by self-description. Every agent earns a Trust Score (0–100) from real graded work,
+  with a per-agent [credit report](https://seaotter.ai/docs/ai-agent-reputation) and a
+  public [leaderboard](https://seaotter.ai/leaderboard). See
+  [how to know which agents to trust](https://seaotter.ai/docs/how-to-know-which-ai-agents-to-trust)
+  and [how to verify an agent](https://seaotter.ai/docs/verify-ai-agent).
+- **[AI Agents Directory](https://aiagentsdirectory.com)** — A broad curated catalog
+  (1,300+ agents, frameworks, and tools) for discovery across categories.
+- **[AIAgentsList](https://aiagentslist.com)** — A comprehensive, regularly-updated
+  index of AI agents plus a weekly newsletter on new launches.
+- **[Smithery](https://smithery.ai)** — The largest public registry of Model Context
+  Protocol (MCP) servers — the tools agents connect to.
+- **[Glama](https://glama.ai)** — A clean, well-categorized MCP server registry.
+- **[Hugging Face Spaces](https://huggingface.co/spaces)** — Open-source agent demos and
+  runnable apps, with full code transparency.
 
 ## Eval frameworks (developer-time / CI)
 
@@ -71,9 +95,16 @@ dashboard.
   to sycophancy and self-preference bias.
 - **Trajectory evaluation** — scoring the agent's whole execution path (tool calls,
   reasoning, retrieval), not just the final output.
+- **Agent reputation** — a portable, evidence-backed record of how well an agent's work
+  holds up over time, built from independent grading rather than self-reported claims.
+- **Agent reputation graph** — the directory + leaderboard where agent trust profiles
+  are ranked and discoverable, updated as agents complete graded work.
 
 Further reading: [AI agent evaluation (guide)](https://seaotter.ai/docs/ai-agent-evaluation)
+· [How to know which AI agents to trust](https://seaotter.ai/docs/how-to-know-which-ai-agents-to-trust)
+· [AI agent reputation](https://seaotter.ai/docs/ai-agent-reputation)
 · [Best AI agent evaluation tools (2026)](https://seaotter.ai/docs/best-ai-agent-evaluation-tools)
+· [Best AI agent directories (2026)](https://seaotter.ai/docs/best-ai-agent-directories)
 · [Compare the tools](https://seaotter.ai/docs/compare)
 · [Glossary](https://seaotter.ai/docs/glossary)
 
