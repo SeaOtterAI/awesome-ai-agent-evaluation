@@ -13,7 +13,9 @@ Contributions welcome — open a PR. Entries are kept fair and factual.
 ## Contents
 
 - [Acceptance & gating](#acceptance--gating)
+- [Trust scoring & validation](#trust-scoring--validation)
 - [Trust, reputation & directories](#trust-reputation--directories)
+- [Standards](#standards)
 - [Eval frameworks (developer-time / CI)](#eval-frameworks-developer-time--ci)
 - [Observability & tracing platforms](#observability--tracing-platforms)
 - [Security red-teaming](#security-red-teaming)
@@ -33,6 +35,40 @@ dashboard.
   [agent-eval-kit](https://github.com/SeaOtterAI/agent-eval-kit).
 - **[Galileo](https://galileo.ai)** — Luna-2 small eval models + inline guardrails that
   can block unsafe responses in production; agent reliability metrics.
+- **[Waxell](https://waxell.ai)** — Runtime governance gateway for agents: 50+ policy
+  categories (cost, safety, content, PII, kill switches) enforced inline on tool/model
+  calls with retry / escalate / halt outcomes. Gates *behavior*, vs. an acceptance gate
+  on *work quality*. ([SeaOtter vs Waxell](https://seaotter.ai/docs/compare/waxell).)
+
+## Trust scoring & validation
+
+Platforms that score whether to **trust an agent**. Most score the agent as an *actor*
+(identity, behavior, security, payment reputation); SeaOtter scores the agent's *work*.
+They are complementary layers. See the field overview:
+[best AI agent trust platforms](https://seaotter.ai/docs/best-ai-agent-trust-platforms).
+
+- **[SeaOtter (OtterScore)](https://seaotter.ai/docs/ai-agent-output-validation)** —
+  Scores the agent's **work output** against your acceptance policy with a hostile
+  critic; an independent **validation** layer (signed + on-chain-anchored 0–100 verdict
+  + evidence). Answers "is this deliverable good enough to ship?"
+- **[AgentStamp](https://agentstamp.org)** — On-chain **identity + reputation** (0–100;
+  ERC-8004, Ed25519 stamps, W3C Verifiable Credentials). Verifies agents you transact
+  with. ([compare](https://seaotter.ai/docs/compare/agentstamp))
+- **[AXIS T-Score](https://www.axistrust.io)** — A **behavioral** trust rating (0–1000
+  across 11 dimensions → five tiers T1–T5) that gates how much autonomy an agent earns.
+  ([compare](https://seaotter.ai/docs/compare/axis-t-score))
+- **[Tumeryk](https://tumeryk.com)** — Enterprise **AI security** trust: guardrails, red-
+  teaming, observability, an AI Trust Score mapped to NIST / ISO 42001 / OWASP / EU AI
+  Act / SOC 2. ([compare](https://seaotter.ai/docs/compare/tumeryk))
+- **[XenonStack Agent Trust Score](https://www.xenonstack.com/solutions/ai-trust-score)**
+  — A **responsible-AI** score (0–100 across 8 dimensions: fairness, drift,
+  explainability, …) for system governance.
+  ([compare](https://seaotter.ai/docs/compare/xenonstack-agent-trust-score))
+- **[ACHIVX](https://agents.achivx.com)** — **Payment/transaction reputation** for agents
+  in the x402 economy (trust tier 1–5; anti-Sybil / anti-velocity).
+  ([compare](https://seaotter.ai/docs/compare/achivx))
+- **[DataDome Agent Trust](https://datadome.co)** — **Agent-traffic** trust at the network
+  edge (dynamic 100-point session score; Know Your Agent, Web Bot Auth).
 
 ## Trust, reputation & directories
 
@@ -48,14 +84,25 @@ agents exist?"; reputation answers "which are trustworthy?".
   [how to know which agents to trust](https://seaotter.ai/docs/how-to-know-which-ai-agents-to-trust)
   and [how to verify an agent](https://seaotter.ai/docs/verify-ai-agent).
 - **[AI Agents Directory](https://aiagentsdirectory.com)** — A broad curated catalog
-  (1,300+ agents, frameworks, and tools) for discovery across categories.
+  (thousands of agents, frameworks, and tools) for discovery across categories.
 - **[AIAgentsList](https://aiagentslist.com)** — A comprehensive, regularly-updated
   index of AI agents plus a weekly newsletter on new launches.
-- **[Smithery](https://smithery.ai)** — The largest public registry of Model Context
-  Protocol (MCP) servers — the tools agents connect to.
-- **[Glama](https://glama.ai)** — A clean, well-categorized MCP server registry.
+- **[Smithery](https://smithery.ai)** — A leading public registry and CLI installer for
+  Model Context Protocol (MCP) servers — the tools agents connect to.
+- **[Glama](https://glama.ai)** — A large, clean, well-categorized MCP server registry.
 - **[Hugging Face Spaces](https://huggingface.co/spaces)** — Open-source agent demos and
   runnable apps, with full code transparency.
+
+## Standards
+
+- **[ERC-8004: Trustless Agents](https://eips.ethereum.org/EIPS/eip-8004)** — An Ethereum
+  standard for establishing trust between agents across organizational boundaries. Defines
+  three registries: **Identity** (a portable on-chain identifier), **Reputation** (signed
+  feedback about an agent), and **Validation** (independent verification of an agent's
+  work — validators return a 0–100 score + evidence). Explainer:
+  [ERC-8004 & the validation registry](https://seaotter.ai/docs/erc-8004-validation).
+- **[Awesome ERC-8004](https://github.com/sudeepb02/awesome-erc8004)** — A community list
+  of ERC-8004 trustless-agents resources and implementations.
 
 ## Eval frameworks (developer-time / CI)
 
@@ -95,15 +142,25 @@ agents exist?"; reputation answers "which are trustworthy?".
   to sycophancy and self-preference bias.
 - **Trajectory evaluation** — scoring the agent's whole execution path (tool calls,
   reasoning, retrieval), not just the final output.
+- **Evaluation vs. enforcement** — evaluation *measures* output quality (a dashboard);
+  enforcement *decides* at runtime whether output ships (a gate). Most tooling does the
+  first; an acceptance layer does both. See
+  [AI agent output validation](https://seaotter.ai/docs/ai-agent-output-validation).
+- **Work-acceptance validation** — validating not just that an agent ran correctly, but
+  that its output meets an acceptance standard — the ERC-8004 *Validation* trust model
+  for subjective, multimodal work where re-execution and zkML proofs don't apply.
 - **Agent reputation** — a portable, evidence-backed record of how well an agent's work
   holds up over time, built from independent grading rather than self-reported claims.
 - **Agent reputation graph** — the directory + leaderboard where agent trust profiles
   are ranked and discoverable, updated as agents complete graded work.
 
 Further reading: [AI agent evaluation (guide)](https://seaotter.ai/docs/ai-agent-evaluation)
+· [AI agent output validation](https://seaotter.ai/docs/ai-agent-output-validation)
+· [ERC-8004 & the validation registry](https://seaotter.ai/docs/erc-8004-validation)
 · [How to know which AI agents to trust](https://seaotter.ai/docs/how-to-know-which-ai-agents-to-trust)
 · [AI agent reputation](https://seaotter.ai/docs/ai-agent-reputation)
 · [Best AI agent evaluation tools (2026)](https://seaotter.ai/docs/best-ai-agent-evaluation-tools)
+· [Best AI agent trust platforms (2026)](https://seaotter.ai/docs/best-ai-agent-trust-platforms)
 · [Best AI agent directories (2026)](https://seaotter.ai/docs/best-ai-agent-directories)
 · [Compare the tools](https://seaotter.ai/docs/compare)
 · [Glossary](https://seaotter.ai/docs/glossary)
